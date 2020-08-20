@@ -1,12 +1,12 @@
 # API setup
 Create virtualenv:
-1.  $ cd CV/api
-2.  $ python3 -m venv venv (linux) / py -m venv venv (windows)
-3.  $ source venv/bin/activate (linux) / .\venv\Scripts\activate (windows)
+1.  $ cd api
+2.  $ py -m venv venv 
+3.  $ .\venv\Scripts\activate 
 4.  $ pip install -r requirements.txt
 
 
 # Run app & update requirements.txt
-*   $ uvicorn main:app --reload
-*   $ deactivate deactivates the Virtualenvironment
+*   $ uvicorn app.main:app --reload
+*   $ deactivate (deactivates the Virtualenvironment)
 *   $ pip freeze > requirements.txt
