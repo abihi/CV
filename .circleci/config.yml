@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.3.2
+
+jobs:
+  build-and-test:
+    docker:
+      - image: circleci/python:3.8
+
+    working_directory: ~/penpal
+
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            cd api
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: run tests and flake8
+          command: |
+            cd api
+            source venv/bin/activate
+            flake8 --statistics
+            coverage run --source=app -m pytest -v
+            coverage report -m
+workflows:
+  main:
+    jobs:
+      - build-and-test
