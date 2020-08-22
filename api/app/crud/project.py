@@ -1,20 +1,20 @@
 from sqlalchemy.orm import Session
 
-from app.schemas.models import Project
-from app.schemas.schemas import ProjectCreate
+from app.models.project import Project
+from app.schemas.project import ProjectCreate
 
 
-def get_project(db: Session, Project_id: int):
-    return db.query(Project).filter(Project.id == Project_id).first()
+def read_project(db: Session, project_id: int):
+    return db.query(Project).filter(Project.id == project_id).first()
 
 
-def get_projects(db: Session):
+def read_projects(db: Session):
     return db.query(Project).all()
 
 
-def create_project(db: Session, Project: ProjectCreate):
+def create_project(db: Session, project: ProjectCreate):
     db_project = Project(
-        title=Project.title, description=Project.description, owner_id=Project.owner_id,
+        title=project.title, description=project.description, owner_id=project.owner_id,
     )
     db.add(db_project)
     db.commit()

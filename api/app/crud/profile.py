@@ -1,14 +1,14 @@
 from sqlalchemy.orm import Session
 
-from app.schemas.models import Profile
-from app.schemas.schemas import ProfileCreate
+from app.models.profile import Profile
+from app.schemas.profile import ProfileCreate
 
 
-def get_profile(db: Session, profile_id: int):
+def read_profile(db: Session, profile_id: int):
     return db.query(Profile).filter(Profile.id == profile_id).first()
 
 
-def get_profiles(db: Session):
+def read_profiles(db: Session):
     return db.query(Profile).all()
 
 

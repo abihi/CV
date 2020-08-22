@@ -7,6 +7,10 @@ Create virtualenv:
 
 
 # Run app & update requirements.txt
-*   $ uvicorn app.main:app --reload
+*   $ uvicorn app:app --reload
 *   $ deactivate (deactivates the Virtualenvironment)
 *   $ pip freeze > requirements.txt
+
+# Run tests & linter
+*   $ python -m pytest
+*   $ flake8 --statistics

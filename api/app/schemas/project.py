@@ -9,7 +9,7 @@ class ProjectBase(BaseModel):
 
 
 class ProjectCreate(ProjectBase):
-    pass
+    owner_id: int
 
 
 class Project(ProjectBase):
